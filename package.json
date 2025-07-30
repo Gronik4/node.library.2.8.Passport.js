@@ -1,0 +1,32 @@
+{
+  "name": "node.library.2.8.passport",
+  "version": "1.0.0",
+  "description": "урс Node.js. Базы данных и хранение данных. Аутентификация. Passport.js",
+  "homepage": "https://github.com/Gronik4/node.library.2.8.Passport.js#readme",
+  "bugs": {
+    "url": "https://github.com/Gronik4/node.library.2.8.Passport.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gronik4/node.library.2.8.Passport.js.git"
+  },
+  "license": "ISC",
+  "author": "Gronik4",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon -L"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
