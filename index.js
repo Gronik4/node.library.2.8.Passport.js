@@ -2,10 +2,10 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const db = require('./db');
+const db = require('./db/users');
 
 const verify = (username, password, done)=>{
-  db.users.findByUsername(username, (err, user)=> {
+  db.findByUsername(username, (err, user)=> {
     if(err) {return done(err);}
     if(!user) {return done(null,false);}
     if(!db.verifyPassword(user, password)) {return done(null,false);}
@@ -25,7 +25,7 @@ passport.serializeUser((user, cb)=> {
 })
 
 passport.deserializeUser((id, cb)=> {
-  db.users.findById(id, (err, user)=> {
+  db.findById(id, (err, user)=> {
     if(err) {return cb(err);}
     cb(null, user);
   })
@@ -55,8 +55,10 @@ app.post('/login',
 )
 
 app.get('/Logout', (req, res)=> {
-  req.logout();
-  res.redirect('/');
+  req.logout(req.user, err=> {
+    if(err) {return next(err)}
+    res.redirect('/');
+  });
 })
 
 app.get('/profile',
